@@ -1,25 +1,21 @@
 var plannerDay = moment().format("MMMM Do YYYY, h:mm:ss a");
-var currentTime = moment().format("HH:00");
+var currentTime = parseInt(moment().format("HH:00"));
 
+//could change timetable to a number
+//change line 6 to 16
 var timeTable = [
-  "8:00",
-  "9:00",
-  "10:00",
-  "11:00",
-  "12:00",
-  "1:00",
-  "2:00",
-  "3:00",
-  "4:00",
-  "5:00",
+  8,9,10,11,12,13,14,15,16,17
 ];
 $("#currentDay").append(plannerDay);
 showPlans();
 
+//if (currentHour==hoursarray.length) $(should be the textarea).addclass (past/present/future)
 
 for (i = 0; i < timeTable.length; i++) {
+    console.log(currentTime)
+    console.log(timeTable[i])
   if (currentTime > timeTable) {
-    console.log("past");
+    console.log('future')
   }
   if (currentTime == timeTable) {
     console.log("present");
@@ -29,24 +25,22 @@ for (i = 0; i < timeTable.length; i++) {
   }
 }
 
+//save the text area to each appropriate button
 $("#save1").on("click", function () {
   var myContent = document.getElementById("plan1").value;
   localStorage.setItem("plan1", plan1.value);
   console.log(myContent);
 });
-
 $("#save2").on("click", function () {
   var myContent = document.getElementById("plan2").value;
   localStorage.setItem("plan2", plan2.value);
   console.log(myContent);
 });
-
 $("#save3").on("click", function () {
   var myContent = document.getElementById("plan3").value;
   localStorage.setItem("plan3", plan3.value);
   console.log(myContent);
 });
-
 $("#save4").on("click", function () {
   var myContent = document.getElementById("plan4").value;
   localStorage.setItem("plan4", plan4.value);
@@ -82,6 +76,8 @@ $("#save10").on("click", function () {
   localStorage.setItem("plan10", plan10.value);
   console.log(myContent);
 });
+
+//hardcodded display for each textarea
 function showPlans() {
   var savedContent = localStorage.getItem("plan1");
   var savedContent2 = localStorage.getItem("plan2");
